@@ -1,0 +1,53 @@
+/* Styling untuk keseluruhan halaman - Tema Alam/Hewan */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #eaddcf; /* Warna pasir savana */
+    color: #3e2723; /* Cokelat gelap */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container utama */
+.card {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fffaf0; /* Putih gading */
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #8d6e63; /* Pinggiran cokelat kayu/ranting */
+    box-shadow: 0 6px 12px rgba(93, 64, 55, 0.15); /* Bayangan kecokelatan */
+}
+
+/* Header utama */
+h1 {
+    color: #2e8b57; /* Hijau rimba (Jungle Green) */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Paragraf */
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4e342e; /* Cokelat bulu beruang */
+}
+
+/* Garis pemisah */
+hr {
+    border: none;
+    height: 3px;
+    background: #ff9800; /* Oranye loreng harimau */
+    margin: 15px 0;
+    border-radius: 2px;
+}
+
+/* Greeting */
+small {
+    display: block;
+    font-style: italic;
+    text-align: center;
+    color: #795548; /* Cokelat tanah */
+    margin-top: 5px;
+    font-weight: bold;
+}
