@@ -20,6 +20,7 @@ const Details = React.lazy(() => import("./pages/Details"))
 const Service = React.lazy(() => import("./pages/Service"))
 const Customers = React.lazy(() => import("./pages/Customers"))
 const Orders = React.lazy(() => import("./pages/Orders"))
+const Products = React.lazy(() => import("./pages/Products"))
 const ErrorPage = React.lazy(() => import("./pages/ErrorPage"))
 const MainLayout = React.lazy(() => import("./layouts/MainLayout"))
 const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"))
@@ -27,6 +28,7 @@ const Login = React.lazy(() => import("./pages/auth/Login"))
 const Register = React.lazy(() => import("./pages/auth/Register"))
 const Forgot = React.lazy(() => import("./pages/auth/Forgot"))
 const NotFound = React.lazy(() => import("./pages/NotFound"))
+const ProductDetail = React.lazy(() => import("./pages/ProductDetail"))
 
 export default function App() {
   const [search, setSearch] = useState("");
@@ -40,7 +42,9 @@ export default function App() {
         <Route path="/services" element={<Service search={search} />} />
         <Route path="/customers" element={<Customers />} />
         <Route path="/orders" element={<Orders />} />
-
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/products/:id" element={<ProductDetail />} /> 
         <Route
           path="/error-400"
           element={

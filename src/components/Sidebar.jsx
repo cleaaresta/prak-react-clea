@@ -1,12 +1,12 @@
 import { AiFillAppstore, AiFillCustomerService } from "react-icons/ai";
 import { TbListDetails } from "react-icons/tb";
-import { FaPlus, FaUsers, FaShoppingCart } from "react-icons/fa";
+import { FaPlus, FaUsers, FaShoppingCart, FaBoxOpen } from "react-icons/fa";
 import { MdErrorOutline, MdLockOutline, MdBlock } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   return (
-    <div className="w-64 bg-white min-h-screen shadow-md flex flex-col justify-between">
+    <div className="w-56 xl:w-64 bg-white min-h-screen shadow-md flex flex-col justify-between">
       {/* Logo */}
       <div>
         <div className="p-6">
@@ -79,6 +79,18 @@ export default function Sidebar() {
             >
               <FaShoppingCart />
               Orders
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/products"
+              className={({ isActive }) =>
+                `flex items-center gap-3 p-2 rounded cursor-pointer ${isActive ? "bg-green-100 text-green-600 font-semibold" : "hover:bg-gray-100"}`
+              }
+            >
+              <FaBoxOpen />
+              Products
             </NavLink>
           </li>
 
