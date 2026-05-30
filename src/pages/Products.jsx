@@ -2,6 +2,10 @@ import { useState } from "react";
 import PageHeader from "../components/PageHeader";
 import productsData from "../data/products.json";
 import { Link } from "react-router-dom";
+import Button from "../components/basic/Button";
+import Input from "../components/form/Input";
+import Modal from "../components/feedback/Modal";
+import Table from "../components/data/Table";
 
 export default function Products() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,7 +16,7 @@ export default function Products() {
     const formData = new FormData(e.target);
     const newProduct = {
       id: `P${(products.length + 1).toString().padStart(3, "0")}`,
-      title: formData.get("title"),
+      tittle: formData.get("tittle"),
       code: formData.get("code"),
       category: formData.get("category"),
       brand: formData.get("brand"),
@@ -36,8 +40,8 @@ export default function Products() {
         </button>
       </PageHeader>
 
-      <div className="mt-6 bg-white rounded-lg shadow overflow-x-auto">
-        <table className="w-full text-left border-collapse">
+      <div className="mt-6">
+        <Table className="rounded-lg shadow overflow-x-auto">
           <thead>
             <tr className="bg-gray-50 border-b">
               <th className="p-4 font-semibold text-gray-600">ID</th>
@@ -58,7 +62,7 @@ export default function Products() {
                     to={`/products/${product.id}`}
                     className="text-emerald-400 hover:text-emerald-500"
                   >
-                    {product.title}
+                    {product.tittle}
                   </Link>
                 </td>
                 <td className="p-4 text-gray-700">{product.code}</td>
@@ -73,102 +77,42 @@ export default function Products() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg w-full max-w-lg p-6">
-            <h2 className="text-xl font-bold mb-4">Add New Product</h2>
-            <form onSubmit={handleAddProduct}>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Nama Produk
-                  </label>
-                  <input
-                    name="tittle"
-                    type="text"
-                    required
-                    className="w-full border rounded p-2 outline-none focus:border-green-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Kode Produk
-                  </label>
-                  <input
-                    name="code"
-                    type="text"
-                    required
-                    className="w-full border rounded p-2 outline-none focus:border-green-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Kategori
-                  </label>
-                  <input
-                    name="category"
-                    type="text"
-                    required
-                    className="w-full border rounded p-2 outline-none focus:border-green-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Brand
-                  </label>
-                  <input
-                    name="brand"
-                    type="text"
-                    required
-                    className="w-full border rounded p-2 outline-none focus:border-green-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Harga (Rp)
-                  </label>
-                  <input
-                    name="price"
-                    type="number"
-                    min="0"
-                    required
-                    className="w-full border rounded p-2 outline-none focus:border-green-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Stok
-                  </label>
-                  <input
-                    name="stock"
-                    type="number"
-                    min="0"
-                    required
-                    className="w-full border rounded p-2 outline-none focus:border-green-500"
-                  />
-                </div>
-              </div>
-              <div className="mt-6 flex justify-end space-x-3">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-                >
-                  Save
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title="Add New Product"
+        >
+          <form onSubmit={handleAddProduct}>
+            <div className="grid gap-4 md:grid-cols-2">
+              <Input label="Nama Produk" name="tittle" type="text" required />
+              <Input label="Kode Produk" name="code" type="text" required />
+              <Input label="Kategori" name="category" type="text" required />
+              <Input label="Brand" name="brand" type="text" required />
+              <Input
+                label="Harga (Rp)"
+                name="price"
+                type="number"
+                min="0"
+                required
+              />
+              <Input label="Stok" name="stock" type="number" min="0" required />
+            </div>
+            <div className="mt-6 flex justify-end gap-3">
+              <Button
+                variant="secondary"
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button type="submit">Save</Button>
+            </div>
+          </form>
+        </Modal>
       )}
     </div>
   );

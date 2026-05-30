@@ -1,6 +1,11 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
 import ordersData from "../data/orders.json";
+import Button from "../components/basic/Button";
+import Input from "../components/form/Input";
+import Select from "../components/form/Select";
+import Modal from "../components/feedback/Modal";
+import Table from "../components/data/Table";
 
 export default function Orders() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,8 +36,8 @@ export default function Orders() {
         </button>
       </PageHeader>
 
-      <div className="mt-6 bg-white rounded-lg shadow overflow-x-auto">
-        <table className="w-full text-left border-collapse">
+      <div className="mt-6">
+        <Table className="rounded-lg shadow overflow-x-auto">
           <thead>
             <tr className="bg-gray-50 border-b">
               <th className="p-4 font-semibold text-gray-600">Order ID</th>
@@ -53,8 +58,8 @@ export default function Orders() {
                       order.status === "Completed"
                         ? "bg-green-100 text-green-700"
                         : order.status === "Pending"
-                        ? "bg-yellow-100 text-yellow-700"
-                        : "bg-red-100 text-red-700"
+                          ? "bg-yellow-100 text-yellow-700"
+                          : "bg-red-100 text-red-700"
                     }`}
                   >
                     {order.status}
@@ -65,81 +70,47 @@ export default function Orders() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       </div>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg w-full max-w-md p-6">
-            <h2 className="text-xl font-bold mb-4">Add New Order</h2>
-            <form onSubmit={handleAddOrder}>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Customer Name
-                  </label>
-                  <input
-                    name="customerName"
-                    type="text"
-                    required
-                    className="w-full border rounded p-2 outline-none focus:border-green-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Status
-                  </label>
-                  <select
-                    name="status"
-                    className="w-full border rounded p-2 outline-none focus:border-green-500"
-                  >
-                    <option value="Pending">Pending</option>
-                    <option value="Completed">Completed</option>
-                    <option value="Cancelled">Cancelled</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Total Price (Rp)
-                  </label>
-                  <input
-                    name="totalPrice"
-                    type="text"
-                    required
-                    className="w-full border rounded p-2 outline-none focus:border-green-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Order Date
-                  </label>
-                  <input
-                    name="orderDate"
-                    type="date"
-                    required
-                    className="w-full border rounded p-2 outline-none focus:border-green-500"
-                  />
-                </div>
-              </div>
-              <div className="mt-6 flex justify-end space-x-3">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-                >
-                  Save
-                </button>
-              </div>
-            </form>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Add New Order"
+      >
+        <form onSubmit={handleAddOrder}>
+          <div className="space-y-4">
+            <Input
+              label="Customer Name"
+              name="customerName"
+              type="text"
+              required
+            />
+            <Select label="Status" name="status">
+              <option value="Pending">Pending</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+            </Select>
+            <Input
+              label="Total Price (Rp)"
+              name="totalPrice"
+              type="text"
+              required
+            />
+            <Input label="Order Date" name="orderDate" type="date" required />
           </div>
-        </div>
-      )}
+          <div className="mt-6 flex justify-end gap-3">
+            <Button
+              variant="secondary"
+              type="button"
+              onClick={() => setIsModalOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button type="submit">Save</Button>
+          </div>
+        </form>
+      </Modal>
     </div>
   );
 }
