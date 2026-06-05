@@ -30,10 +30,6 @@ export default function Header({ search, setSearch }) {
             </span>
           </div>
 
-          <div className="p-3 bg-blue-100 rounded-2xl">
-            <FcAreaChart />
-          </div>
-
           <div className="p-3 bg-red-100 rounded-2xl text-red-500">
             <SlSettings />
           </div>

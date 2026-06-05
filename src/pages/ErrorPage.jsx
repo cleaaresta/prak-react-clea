@@ -20,7 +20,7 @@ export default function ErrorPage({
       <h2 className="text-2xl text-gray-700 font-semibold mb-2">
         Oops! Terjadi Kesalahan
       </h2>
-      <p className="text-gray-600 max-w-md mx-auto mb-8">
+      <p className="text-gray-500 max-w-md mx-auto mb-8">
         {errorDescription}
       </p>
 
