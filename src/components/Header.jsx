@@ -30,10 +30,6 @@ export default function Header({ search, setSearch }) {
             </span>
           </div>
 
-          <div className="p-3 bg-blue-100 rounded-2xl">
-            <FcAreaChart />
-          </div>
-
           <div className="p-3 bg-red-100 rounded-2xl text-red-500">
             <SlSettings />
           </div>
@@ -42,11 +38,7 @@ export default function Header({ search, setSearch }) {
             <span>
               Hei, <b>Clearesta Rahimah Thee</b>
             </span>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
-              className="w-10 h-10 rounded-full border-2 border-white shadow"
-              alt="avatar"
-            />
+
           </div>
         </div>
       </div>
