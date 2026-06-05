@@ -92,6 +92,18 @@ export default function Sidebar() {
             </NavLink>
           </li>
 
+          <li>
+            <NavLink
+              to="/fitur-xyz"
+              className={({ isActive }) =>
+                `flex items-center gap-3 p-2 rounded cursor-pointer ${isActive ? "bg-green-100 text-green-600 font-semibold" : "hover:bg-gray-100"}`
+              }
+            >
+              <FaPlus />
+              Fitur XYZ
+            </NavLink>
+          </li>
+
           <li className="pt-4 pb-2 text-xs font-semibold text-gray-400 uppercase">
             Errors
           </li>
