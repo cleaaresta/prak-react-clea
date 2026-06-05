@@ -30,10 +30,6 @@ export default function Header({ search, setSearch }) {
             </span>
           </div>
 
-          <div className="p-3 bg-red-100 rounded-2xl text-red-500">
-            <SlSettings />
-          </div>
-
           <div className="flex items-center space-x-4 border-l pl-4 border-gray-300">
             <span>
               Hei, <b>Clearesta Rahimah Thee</b>
