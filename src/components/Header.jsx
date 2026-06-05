@@ -38,11 +38,7 @@ export default function Header({ search, setSearch }) {
             <span>
               Hello, <b>Robby Arya Saputra</b>
             </span>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
-              className="w-10 h-10 rounded-full border-2 border-white shadow"
-              alt="avatar"
-            />
+
           </div>
         </div>
       </div>
