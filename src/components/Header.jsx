@@ -40,7 +40,7 @@ export default function Header({ search, setSearch }) {
 
           <div className="flex items-center space-x-4 border-l pl-4 border-gray-300">
             <span>
-              Hello, <b>Robby Arya Saputra</b>
+              Hei, <b>Clearesta Rahimah Thee</b>
             </span>
             <img
               src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
